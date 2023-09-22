@@ -1,10 +1,20 @@
-import { LineChart as LChart, Line, CartesianGrid, XAxis, YAxis, Tooltip } from "recharts";
+import {
+  LineChart as LChart,
+  BarChart,
+  Bar,
+  Line,
+  CartesianGrid,
+  XAxis,
+  YAxis,
+  Tooltip,
+  Legend,
+} from "recharts";
 
 const LineChart = () => {
   const marks = [
-    { student: "Alice", math: 85, physics: 78, biology: 92 },
+    { student: "Alice", math: 35, physics: 78, biology: 92 },
     { student: "Bob", math: 76, physics: 88, biology: 65 },
-    { student: "Charlie", math: 92, physics: 80, biology: 74 },
+    { student: "Lie", math: 92, physics: 80, biology: 74 },
     { student: "David", math: 68, physics: 75, biology: 82 },
     { student: "Eve", math: 78, physics: 90, biology: 70 },
     { student: "Frank", math: 88, physics: 68, biology: 89 },
@@ -26,13 +36,27 @@ const LineChart = () => {
 
   return (
     <div>
-      <LChart width={1000} height={600} data={marks} margin={{ top: 5, right: 20, bottom: 5, left: 0 }}>
-        <Line type="monotone" dataKey="math" />
-        <CartesianGrid stroke="#ccc" />
-        <XAxis dataKey="student" />
-        <YAxis dat />
-        <Tooltip />
-      </LChart>
+      <div className="">
+        <LChart width={1600} height={600} data={marks} margin={{ top: 5, right: 0, bottom: 5, left: 100 }}>
+          <Line type="monotone" dataKey="math" stroke="#82ca9d" />
+          <Line type="monotone" dataKey="physics" stroke="#82ca" strokeWidth={2} />
+          <CartesianGrid stroke="#ccc" />
+          <XAxis dataKey="student" />
+          <YAxis />
+          <Tooltip />
+        </LChart>
+      </div>
+      <div>
+        <BarChart width={1500} height={600} data={marks} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey="student" />
+          <YAxis />
+          <Tooltip />
+          <Legend />
+          <Bar dataKey="math" fill="#8884d8" />
+          <Bar dataKey="physics" fill="#82ca9d" />
+        </BarChart>
+      </div>
     </div>
   );
 };
